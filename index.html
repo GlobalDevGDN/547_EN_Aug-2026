@@ -17,12 +17,14 @@ width:100%;
 max-width:900px;
 margin:30px auto;
 
-font-family:"Plus Jakarta Sans",Arial,sans-serif;
-color:var(--text)
+font-family:"Plus Jakarta Sans",Arial,Helvetica,sans-serif;
+color:var(--text);
 }
 
-#gd-prison-health *{
-box-sizing:border-box
+#gd-prison-health *,
+#gd-prison-health *::before,
+#gd-prison-health *::after{
+box-sizing:border-box;
 }
 
 
@@ -34,7 +36,7 @@ box-sizing:border-box
 background:var(--bg);
 border-radius:24px;
 padding:38px 42px 28px;
-overflow:hidden
+overflow:hidden;
 }
 
 
@@ -48,7 +50,7 @@ font-weight:700;
 letter-spacing:.09em;
 text-transform:uppercase;
 opacity:.58;
-margin-bottom:10px
+margin-bottom:10px;
 }
 
 #gd-prison-health .gd-title{
@@ -57,14 +59,14 @@ line-height:1.06;
 letter-spacing:-.04em;
 font-weight:700;
 margin:0 0 18px;
-max-width:720px
+max-width:720px;
 }
 
 #gd-prison-health .gd-intro{
 font-size:14px;
 line-height:1.5;
 margin:0;
-max-width:700px
+max-width:700px;
 }
 
 #gd-prison-health .gd-big-number{
@@ -73,13 +75,13 @@ line-height:.9;
 letter-spacing:-.055em;
 font-weight:700;
 display:inline-block;
-margin-right:7px
+margin-right:7px;
 }
 
 #gd-prison-health .gd-intro-label{
 display:inline-block;
 vertical-align:middle;
-max-width:400px
+max-width:400px;
 }
 
 
@@ -90,7 +92,7 @@ max-width:400px
 #gd-prison-health .gd-divider{
 height:1px;
 background:rgba(23,23,23,.13);
-margin:24px 0 22px
+margin:24px 0 22px;
 }
 
 
@@ -102,63 +104,72 @@ margin:24px 0 22px
 font-size:18px;
 line-height:1.3;
 font-weight:700;
-margin:0 0 5px
+margin:0 0 5px;
 }
 
 #gd-prison-health .gd-description{
 font-size:12px;
 line-height:1.45;
 opacity:.62;
-margin:0 0 18px
+margin:0 0 16px;
 }
 
 
 /* =========================
-   COMPACT ICON GRID
+   DOT GRID
 ========================= */
 
 #gd-prison-health .gd-icon-grid{
 
-width:min(100%,480px);
+width:min(100%,390px);
 
-margin:0 auto 14px;
+margin:0 auto 16px;
 
 display:grid;
 
 grid-template-columns:repeat(10,1fr);
 
-gap:5px 7px;
+gap:7px;
+
+padding:4px 8px;
 
 }
 
 
 /* =========================
-   PERSON
+   DOT
 ========================= */
 
 #gd-prison-health .gd-person{
 
-position:relative;
+width:100%;
 
-aspect-ratio:.62;
+aspect-ratio:1;
+
+border-radius:50%;
+
+background:var(--muted);
 
 opacity:0;
 
-transform:translateY(10px) scale(.72);
+transform:scale(.35);
 
-animation:gdEnter .38s cubic-bezier(.2,.8,.2,1) forwards;
-
-animation-play-state:paused;
+transition:
+background .25s ease,
+opacity .25s ease,
+transform .25s ease,
+filter .25s ease;
 
 }
 
 
 /* =========================
-   ANIMATION
+   APPEAR
 ========================= */
 
 #gd-prison-health.gd-running .gd-person{
-animation-play-state:running
+opacity:1;
+animation:gdDotIn .35s cubic-bezier(.2,.8,.2,1) forwards;
 }
 
 #gd-prison-health.gd-running .gd-person:nth-child(1){animation-delay:.02s}
@@ -272,83 +283,52 @@ animation-play-state:running
 #gd-prison-health.gd-running .gd-person:nth-child(100){animation-delay:2s}
 
 
-@keyframes gdEnter{
+@keyframes gdDotIn{
+
 0%{
 opacity:0;
-transform:translateY(10px) scale(.72)
+transform:scale(.35);
 }
-65%{
+
+70%{
 opacity:1;
-transform:translateY(-2px) scale(1.04)
+transform:scale(1.15);
 }
+
 100%{
 opacity:1;
-transform:translateY(0) scale(1)
-}
-}
-
-
-/* =========================
-   PERSON SHAPE
-========================= */
-
-#gd-prison-health .gd-person:before{
-content:"";
-position:absolute;
-width:42%;
-aspect-ratio:1;
-border-radius:50%;
-background:var(--muted);
-top:0;
-left:29%;
-transition:background .25s ease
+transform:scale(1);
 }
 
-#gd-prison-health .gd-person:after{
-content:"";
-position:absolute;
-width:70%;
-height:63%;
-border-radius:45% 45% 22% 22%;
-background:var(--muted);
-bottom:0;
-left:15%;
-transition:background .25s ease
 }
 
 
 /* =========================
-   COLOURS
+   SELECTED COLOURS
 ========================= */
 
-#gd-prison-health .gd-person.active.mental:before,
-#gd-prison-health .gd-person.active.mental:after{
-background:var(--blue)
+#gd-prison-health .gd-person.active.mental{
+background:var(--blue);
 }
 
-#gd-prison-health .gd-person.active.hiv:before,
-#gd-prison-health .gd-person.active.hiv:after{
-background:var(--pink)
+#gd-prison-health .gd-person.active.hiv{
+background:var(--pink);
 }
 
-#gd-prison-health .gd-person.active.skin:before,
-#gd-prison-health .gd-person.active.skin:after{
-background:var(--yellow)
+#gd-prison-health .gd-person.active.skin{
+background:var(--yellow);
 }
 
-#gd-prison-health .gd-person.active.malaria:before,
-#gd-prison-health .gd-person.active.malaria:after{
-background:var(--teal)
+#gd-prison-health .gd-person.active.malaria{
+background:var(--teal);
 }
 
-#gd-prison-health .gd-person.active.tb:before,
-#gd-prison-health .gd-person.active.tb:after{
-background:var(--coral)
+#gd-prison-health .gd-person.active.tb{
+background:var(--coral);
 }
 
-#gd-prison-health .gd-person.active.other:before,
-#gd-prison-health .gd-person.active.other:after{
-background:var(--purple)
+#gd-prison-health .gd-person.active.other{
+background:var(--purple);
 }
 
 
@@ -357,14 +337,14 @@ background:var(--purple)
 ========================= */
 
 #gd-prison-health .gd-person.selected{
-transform:translateY(-3px) scale(1.12);
-filter:drop-shadow(0 4px 4px rgba(0,0,0,.1));
-z-index:3
+transform:scale(1.45);
+filter:drop-shadow(0 2px 3px rgba(0,0,0,.12));
+z-index:2;
 }
 
 #gd-prison-health .gd-person.dimmed{
-opacity:.13;
-transform:scale(.88)
+opacity:.18;
+transform:scale(.82);
 }
 
 
@@ -374,31 +354,33 @@ transform:scale(.88)
 
 #gd-prison-health .gd-stat{
 text-align:center;
-min-height:105px;
+min-height:92px;
+
 display:flex;
 flex-direction:column;
 justify-content:center;
 align-items:center;
-margin:0 auto 14px
+
+margin:0 auto 12px;
 }
 
 #gd-prison-health .gd-stat-condition{
 font-size:15px;
 font-weight:700;
-line-height:1.3
+line-height:1.3;
 }
 
 #gd-prison-health .gd-stat-number{
 font-size:clamp(38px,5vw,56px);
 font-weight:700;
 line-height:.95;
-letter-spacing:-.055em
+letter-spacing:-.055em;
 }
 
 #gd-prison-health .gd-stat-percent{
 font-size:13px;
 opacity:.62;
-margin-top:5px
+margin-top:5px;
 }
 
 
@@ -411,58 +393,63 @@ text-align:center;
 font-size:11px;
 font-weight:700;
 opacity:.55;
-margin-bottom:9px
+margin-bottom:9px;
 }
 
 #gd-prison-health .gd-legend{
 display:grid;
 grid-template-columns:repeat(2,1fr);
-gap:7px 10px
+gap:7px 10px;
 }
 
 #gd-prison-health .gd-legend-button{
 border:1px solid rgba(23,23,23,.13);
 background:rgba(255,255,255,.3);
 border-radius:10px;
+
 padding:9px 10px;
+
 display:flex;
 align-items:center;
 gap:8px;
+
 font-family:inherit;
 color:var(--text);
+
 cursor:pointer;
 text-align:left;
-transition:.2s ease
+
+transition:.2s ease;
 }
 
 #gd-prison-health .gd-legend-button:hover{
 transform:translateY(-1px);
-background:white
+background:white;
 }
 
 #gd-prison-health .gd-legend-button.selected{
 background:white;
-border-color:rgba(23,23,23,.35)
+border-color:rgba(23,23,23,.35);
 }
 
 #gd-prison-health .gd-swatch{
 width:10px;
 height:10px;
 min-width:10px;
-border-radius:50%
+border-radius:50%;
 }
 
 #gd-prison-health .gd-legend-name{
 flex:1;
 font-size:11px;
 line-height:1.3;
-font-weight:600
+font-weight:600;
 }
 
 #gd-prison-health .gd-legend-percent{
 font-size:10px;
 opacity:.58;
-white-space:nowrap
+white-space:nowrap;
 }
 
 
@@ -473,25 +460,30 @@ white-space:nowrap
 #gd-prison-health .gd-controls{
 display:flex;
 justify-content:center;
-margin-top:18px
+margin-top:17px;
 }
 
 #gd-prison-health .gd-replay{
 border:none;
 background:var(--text);
 color:white;
+
 border-radius:999px;
+
 padding:8px 16px;
+
 font-family:inherit;
 font-size:11px;
 font-weight:700;
+
 cursor:pointer;
-transition:.2s ease
+
+transition:.2s ease;
 }
 
 #gd-prison-health .gd-replay:hover{
 transform:translateY(-1px);
-opacity:.85
+opacity:.85;
 }
 
 
@@ -501,11 +493,13 @@ opacity:.85
 
 #gd-prison-health .gd-footnote{
 max-width:680px;
-margin:18px auto 0;
+margin:17px auto 0;
+
 font-size:10px;
 line-height:1.45;
+
 opacity:.55;
-text-align:center
+text-align:center;
 }
 
 
@@ -516,22 +510,27 @@ text-align:center
 #gd-prison-health .gd-badge-wrap{
 display:flex;
 justify-content:center;
-margin-top:20px
+margin-top:19px;
 }
 
 #gd-prison-health .gd-badge{
 width:30px;
 height:30px;
+
 border-radius:50%;
+
 background:white;
 color:#111;
+
 display:flex;
 align-items:center;
 justify-content:center;
+
 font-family:Arial,sans-serif;
 font-size:13px;
 font-weight:700;
-box-shadow:0 1px 5px rgba(0,0,0,.06)
+
+box-shadow:0 1px 5px rgba(0,0,0,.06);
 }
 
 
@@ -543,29 +542,46 @@ box-shadow:0 1px 5px rgba(0,0,0,.06)
 
 #gd-prison-health .gd-card{
 padding:28px 16px 22px;
-border-radius:18px
+border-radius:18px;
 }
 
 #gd-prison-health .gd-title{
-font-size:27px
+font-size:27px;
 }
 
 #gd-prison-health .gd-big-number{
 display:block;
-margin:0 0 4px
+margin:0 0 4px;
 }
 
 #gd-prison-health .gd-intro-label{
-max-width:100%
+max-width:100%;
 }
 
 #gd-prison-health .gd-icon-grid{
-width:min(100%,360px);
-gap:4px 5px
+width:min(100%,300px);
+gap:5px;
+padding:3px 5px;
 }
 
 #gd-prison-health .gd-legend{
-grid-template-columns:1fr
+grid-template-columns:1fr;
+}
+
+}
+
+
+/* =========================
+   REDUCED MOTION
+========================= */
+
+@media(prefers-reduced-motion:reduce){
+
+#gd-prison-health .gd-person{
+animation:none!important;
+transition:none!important;
+opacity:1!important;
+transform:none!important;
 }
 
 }
@@ -575,17 +591,22 @@ grid-template-columns:1fr
 
 <div class="gd-card">
 
+
 <div class="gd-kicker">
 Health after prison · Uganda · 2025
 </div>
+
 
 <h2 class="gd-title">
 What health challenges did people face after leaving prison?
 </h2>
 
+
 <p class="gd-intro">
 
-<span class="gd-big-number">2,125</span>
+<span class="gd-big-number">
+2,125
+</span>
 
 <span class="gd-intro-label">
 newly released people were followed for
@@ -595,69 +616,149 @@ in the Greater Masaka Region.
 
 </p>
 
+
 <div class="gd-divider"></div>
+
 
 <h3 class="gd-heading">
 A snapshot of their reported health conditions
 </h3>
 
+
 <p class="gd-description">
-Each icon represents roughly 1% of the people followed.
+Each dot represents roughly 1% of the people followed.
 Select a condition to explore it.
 </p>
 
 
 <!-- =========================
-100 PEOPLE
+     100 DOTS
 ========================= -->
 
 <div class="gd-icon-grid">
 
 <!-- 47 MENTAL -->
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
 
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
-<span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
+<span class="gd-person mental"></span>
 
 
 <!-- 24 HIV -->
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
 
-<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
-<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
-<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
-<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
-<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span>
 
 
 <!-- 10 SKIN -->
-
-<span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span>
-<span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
+<span class="gd-person skin"></span>
 
 
 <!-- 9 MALARIA -->
-
-<span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span>
-<span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span>
 
 
 <!-- 7 TB -->
-
-<span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span>
-<span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
+<span class="gd-person tb"></span>
 
 
 <!-- 3 OTHER -->
-
-<span class="gd-person other"></span><span class="gd-person other"></span><span class="gd-person other"></span>
+<span class="gd-person other"></span>
+<span class="gd-person other"></span>
+<span class="gd-person other"></span>
 
 </div>
 
@@ -736,13 +837,14 @@ CLICK A CONDITION TO EXPLORE
 
 <div class="gd-footnote">
 Percentages and counts are as reported in the source data.
-The 100-icon grid uses rounded whole-icon proportions for visualisation.
+The 100-dot grid uses rounded whole-dot proportions for visualisation.
 </div>
 
 
 <div class="gd-badge-wrap">
 <div class="gd-badge">Gd</div>
 </div>
+
 
 </div>
 
@@ -755,7 +857,7 @@ var root=document.getElementById("gd-prison-health");
 
 if(!root)return;
 
-var people=root.querySelectorAll(".gd-person");
+var dots=root.querySelectorAll(".gd-person");
 
 var buttons=root.querySelectorAll(".gd-legend-button");
 
@@ -769,12 +871,19 @@ var replay=root.querySelector(".gd-replay");
 
 
 var data={
+
 mental:["Mental health disorders","1,000","47.1%"],
+
 hiv:["HIV/AIDS","510","24.0%"],
+
 skin:["Skin diseases","205","9.6%"],
+
 malaria:["Malaria","190","8.9%"],
+
 tb:["Tuberculosis (TB)","140","6.6%"],
+
 other:["Others","80","3.8%"]
+
 };
 
 
@@ -799,15 +908,15 @@ button.getAttribute("data-condition")===key
 });
 
 
-people.forEach(function(person){
+dots.forEach(function(dot){
 
-var match=person.classList.contains(key);
+var match=dot.classList.contains(key);
 
-person.classList.toggle("active",match);
+dot.classList.toggle("active",match);
 
-person.classList.toggle("selected",match);
+dot.classList.toggle("selected",match);
 
-person.classList.toggle("dimmed",!match);
+dot.classList.toggle("dimmed",!match);
 
 });
 
@@ -829,9 +938,9 @@ button.getAttribute("data-condition")
 
 replay.addEventListener("click",function(){
 
-people.forEach(function(person){
+dots.forEach(function(dot){
 
-person.classList.remove(
+dot.classList.remove(
 "active",
 "selected",
 "dimmed"
@@ -851,6 +960,7 @@ root.classList.add("gd-running");
 if("IntersectionObserver" in window){
 
 var observer=new IntersectionObserver(
+
 function(entries){
 
 if(entries[0].isIntersecting){
@@ -862,7 +972,9 @@ observer.disconnect();
 }
 
 },
+
 {threshold:.1}
+
 );
 
 observer.observe(root);
