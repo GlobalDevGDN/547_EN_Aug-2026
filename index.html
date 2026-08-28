@@ -1,0 +1,837 @@
+
+<div id="gd-prison-health">
+
+<style>
+#gd-prison-health{
+--bg:#F8F4EE;
+--text:#171717;
+--muted:#C8C5BF;
+--blue:#323DA5;
+--pink:#D33C62;
+--yellow:#FFD166;
+--teal:#06D6A0;
+--coral:#EE7B72;
+--purple:#844DEE;
+width:100%;
+max-width:900px;
+margin:40px auto;
+font-family:"Plus Jakarta Sans",Arial,sans-serif;
+color:var(--text)
+}
+
+#gd-prison-health *{box-sizing:border-box}
+
+#gd-prison-health .gd-card{
+background:var(--bg);
+border-radius:24px;
+padding:48px 42px 32px;
+overflow:hidden
+}
+
+#gd-prison-health .gd-kicker{
+font-size:12px;
+font-weight:700;
+letter-spacing:.09em;
+text-transform:uppercase;
+opacity:.58;
+margin-bottom:13px
+}
+
+#gd-prison-health .gd-title{
+font-size:clamp(29px,4.4vw,45px);
+line-height:1.06;
+letter-spacing:-.04em;
+font-weight:700;
+margin:0 0 22px;
+max-width:720px
+}
+
+#gd-prison-health .gd-intro{
+font-size:15px;
+line-height:1.6;
+margin:0;
+max-width:700px
+}
+
+#gd-prison-health .gd-big-number{
+font-size:clamp(45px,7vw,72px);
+line-height:.9;
+letter-spacing:-.055em;
+font-weight:700;
+display:inline-block;
+margin-right:8px
+}
+
+#gd-prison-health .gd-intro-label{
+display:inline-block;
+vertical-align:middle;
+max-width:400px
+}
+
+#gd-prison-health .gd-divider{
+height:1px;
+background:rgba(23,23,23,.13);
+margin:30px 0 28px
+}
+
+#gd-prison-health .gd-heading{
+font-size:19px;
+line-height:1.3;
+font-weight:700;
+margin:0 0 6px
+}
+
+#gd-prison-health .gd-description{
+font-size:13px;
+line-height:1.55;
+opacity:.62;
+margin:0 0 26px
+}
+
+
+/* =========================
+   ICON GRID
+========================= */
+
+#gd-prison-health .gd-icon-grid{
+width:min(100%,620px);
+margin:0 auto 25px;
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:clamp(7px,1.3vw,12px)
+}
+
+
+/* =========================
+   PEOPLE
+========================= */
+
+#gd-prison-health .gd-person{
+position:relative;
+aspect-ratio:.62;
+opacity:0;
+transform:translateY(18px) scale(.7);
+animation:gdEnter .45s cubic-bezier(.2,.8,.2,1) forwards;
+animation-play-state:paused
+}
+
+#gd-prison-health.gd-running .gd-person{
+animation-play-state:running
+}
+
+
+/* stagger animation */
+
+#gd-prison-health.gd-running .gd-person:nth-child(1){animation-delay:.05s}
+#gd-prison-health.gd-running .gd-person:nth-child(2){animation-delay:.08s}
+#gd-prison-health.gd-running .gd-person:nth-child(3){animation-delay:.11s}
+#gd-prison-health.gd-running .gd-person:nth-child(4){animation-delay:.14s}
+#gd-prison-health.gd-running .gd-person:nth-child(5){animation-delay:.17s}
+#gd-prison-health.gd-running .gd-person:nth-child(6){animation-delay:.20s}
+#gd-prison-health.gd-running .gd-person:nth-child(7){animation-delay:.23s}
+#gd-prison-health.gd-running .gd-person:nth-child(8){animation-delay:.26s}
+#gd-prison-health.gd-running .gd-person:nth-child(9){animation-delay:.29s}
+#gd-prison-health.gd-running .gd-person:nth-child(10){animation-delay:.32s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(11){animation-delay:.35s}
+#gd-prison-health.gd-running .gd-person:nth-child(12){animation-delay:.38s}
+#gd-prison-health.gd-running .gd-person:nth-child(13){animation-delay:.41s}
+#gd-prison-health.gd-running .gd-person:nth-child(14){animation-delay:.44s}
+#gd-prison-health.gd-running .gd-person:nth-child(15){animation-delay:.47s}
+#gd-prison-health.gd-running .gd-person:nth-child(16){animation-delay:.50s}
+#gd-prison-health.gd-running .gd-person:nth-child(17){animation-delay:.53s}
+#gd-prison-health.gd-running .gd-person:nth-child(18){animation-delay:.56s}
+#gd-prison-health.gd-running .gd-person:nth-child(19){animation-delay:.59s}
+#gd-prison-health.gd-running .gd-person:nth-child(20){animation-delay:.62s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(21){animation-delay:.65s}
+#gd-prison-health.gd-running .gd-person:nth-child(22){animation-delay:.68s}
+#gd-prison-health.gd-running .gd-person:nth-child(23){animation-delay:.71s}
+#gd-prison-health.gd-running .gd-person:nth-child(24){animation-delay:.74s}
+#gd-prison-health.gd-running .gd-person:nth-child(25){animation-delay:.77s}
+#gd-prison-health.gd-running .gd-person:nth-child(26){animation-delay:.80s}
+#gd-prison-health.gd-running .gd-person:nth-child(27){animation-delay:.83s}
+#gd-prison-health.gd-running .gd-person:nth-child(28){animation-delay:.86s}
+#gd-prison-health.gd-running .gd-person:nth-child(29){animation-delay:.89s}
+#gd-prison-health.gd-running .gd-person:nth-child(30){animation-delay:.92s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(31){animation-delay:.95s}
+#gd-prison-health.gd-running .gd-person:nth-child(32){animation-delay:.98s}
+#gd-prison-health.gd-running .gd-person:nth-child(33){animation-delay:1.01s}
+#gd-prison-health.gd-running .gd-person:nth-child(34){animation-delay:1.04s}
+#gd-prison-health.gd-running .gd-person:nth-child(35){animation-delay:1.07s}
+#gd-prison-health.gd-running .gd-person:nth-child(36){animation-delay:1.10s}
+#gd-prison-health.gd-running .gd-person:nth-child(37){animation-delay:1.13s}
+#gd-prison-health.gd-running .gd-person:nth-child(38){animation-delay:1.16s}
+#gd-prison-health.gd-running .gd-person:nth-child(39){animation-delay:1.19s}
+#gd-prison-health.gd-running .gd-person:nth-child(40){animation-delay:1.22s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(41){animation-delay:1.25s}
+#gd-prison-health.gd-running .gd-person:nth-child(42){animation-delay:1.28s}
+#gd-prison-health.gd-running .gd-person:nth-child(43){animation-delay:1.31s}
+#gd-prison-health.gd-running .gd-person:nth-child(44){animation-delay:1.34s}
+#gd-prison-health.gd-running .gd-person:nth-child(45){animation-delay:1.37s}
+#gd-prison-health.gd-running .gd-person:nth-child(46){animation-delay:1.40s}
+#gd-prison-health.gd-running .gd-person:nth-child(47){animation-delay:1.43s}
+#gd-prison-health.gd-running .gd-person:nth-child(48){animation-delay:1.46s}
+#gd-prison-health.gd-running .gd-person:nth-child(49){animation-delay:1.49s}
+#gd-prison-health.gd-running .gd-person:nth-child(50){animation-delay:1.52s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(51){animation-delay:1.55s}
+#gd-prison-health.gd-running .gd-person:nth-child(52){animation-delay:1.58s}
+#gd-prison-health.gd-running .gd-person:nth-child(53){animation-delay:1.61s}
+#gd-prison-health.gd-running .gd-person:nth-child(54){animation-delay:1.64s}
+#gd-prison-health.gd-running .gd-person:nth-child(55){animation-delay:1.67s}
+#gd-prison-health.gd-running .gd-person:nth-child(56){animation-delay:1.70s}
+#gd-prison-health.gd-running .gd-person:nth-child(57){animation-delay:1.73s}
+#gd-prison-health.gd-running .gd-person:nth-child(58){animation-delay:1.76s}
+#gd-prison-health.gd-running .gd-person:nth-child(59){animation-delay:1.79s}
+#gd-prison-health.gd-running .gd-person:nth-child(60){animation-delay:1.82s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(61){animation-delay:1.85s}
+#gd-prison-health.gd-running .gd-person:nth-child(62){animation-delay:1.88s}
+#gd-prison-health.gd-running .gd-person:nth-child(63){animation-delay:1.91s}
+#gd-prison-health.gd-running .gd-person:nth-child(64){animation-delay:1.94s}
+#gd-prison-health.gd-running .gd-person:nth-child(65){animation-delay:1.97s}
+#gd-prison-health.gd-running .gd-person:nth-child(66){animation-delay:2.00s}
+#gd-prison-health.gd-running .gd-person:nth-child(67){animation-delay:2.03s}
+#gd-prison-health.gd-running .gd-person:nth-child(68){animation-delay:2.06s}
+#gd-prison-health.gd-running .gd-person:nth-child(69){animation-delay:2.09s}
+#gd-prison-health.gd-running .gd-person:nth-child(70){animation-delay:2.12s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(71){animation-delay:2.15s}
+#gd-prison-health.gd-running .gd-person:nth-child(72){animation-delay:2.18s}
+#gd-prison-health.gd-running .gd-person:nth-child(73){animation-delay:2.21s}
+#gd-prison-health.gd-running .gd-person:nth-child(74){animation-delay:2.24s}
+#gd-prison-health.gd-running .gd-person:nth-child(75){animation-delay:2.27s}
+#gd-prison-health.gd-running .gd-person:nth-child(76){animation-delay:2.30s}
+#gd-prison-health.gd-running .gd-person:nth-child(77){animation-delay:2.33s}
+#gd-prison-health.gd-running .gd-person:nth-child(78){animation-delay:2.36s}
+#gd-prison-health.gd-running .gd-person:nth-child(79){animation-delay:2.39s}
+#gd-prison-health.gd-running .gd-person:nth-child(80){animation-delay:2.42s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(81){animation-delay:2.45s}
+#gd-prison-health.gd-running .gd-person:nth-child(82){animation-delay:2.48s}
+#gd-prison-health.gd-running .gd-person:nth-child(83){animation-delay:2.51s}
+#gd-prison-health.gd-running .gd-person:nth-child(84){animation-delay:2.54s}
+#gd-prison-health.gd-running .gd-person:nth-child(85){animation-delay:2.57s}
+#gd-prison-health.gd-running .gd-person:nth-child(86){animation-delay:2.60s}
+#gd-prison-health.gd-running .gd-person:nth-child(87){animation-delay:2.63s}
+#gd-prison-health.gd-running .gd-person:nth-child(88){animation-delay:2.66s}
+#gd-prison-health.gd-running .gd-person:nth-child(89){animation-delay:2.69s}
+#gd-prison-health.gd-running .gd-person:nth-child(90){animation-delay:2.72s}
+
+#gd-prison-health.gd-running .gd-person:nth-child(91){animation-delay:2.75s}
+#gd-prison-health.gd-running .gd-person:nth-child(92){animation-delay:2.78s}
+#gd-prison-health.gd-running .gd-person:nth-child(93){animation-delay:2.81s}
+#gd-prison-health.gd-running .gd-person:nth-child(94){animation-delay:2.84s}
+#gd-prison-health.gd-running .gd-person:nth-child(95){animation-delay:2.87s}
+#gd-prison-health.gd-running .gd-person:nth-child(96){animation-delay:2.90s}
+#gd-prison-health.gd-running .gd-person:nth-child(97){animation-delay:2.93s}
+#gd-prison-health.gd-running .gd-person:nth-child(98){animation-delay:2.96s}
+#gd-prison-health.gd-running .gd-person:nth-child(99){animation-delay:2.99s}
+#gd-prison-health.gd-running .gd-person:nth-child(100){animation-delay:3.02s}
+
+
+@keyframes gdEnter{
+0%{
+opacity:0;
+transform:translateY(18px) scale(.7)
+}
+65%{
+opacity:1;
+transform:translateY(-3px) scale(1.05)
+}
+100%{
+opacity:1;
+transform:translateY(0) scale(1)
+}
+}
+
+
+/* =========================
+   HEAD + BODY
+========================= */
+
+#gd-prison-health .gd-person:before{
+content:"";
+position:absolute;
+width:42%;
+aspect-ratio:1;
+border-radius:50%;
+background:var(--muted);
+top:0;
+left:29%;
+transition:background .25s ease
+}
+
+#gd-prison-health .gd-person:after{
+content:"";
+position:absolute;
+width:70%;
+height:63%;
+border-radius:45% 45% 22% 22%;
+background:var(--muted);
+bottom:0;
+left:15%;
+transition:background .25s ease
+}
+
+
+/* =========================
+   COLOUR STATES
+========================= */
+
+#gd-prison-health .gd-person.active.mental:before,
+#gd-prison-health .gd-person.active.mental:after{
+background:var(--blue)
+}
+
+#gd-prison-health .gd-person.active.hiv:before,
+#gd-prison-health .gd-person.active.hiv:after{
+background:var(--pink)
+}
+
+#gd-prison-health .gd-person.active.skin:before,
+#gd-prison-health .gd-person.active.skin:after{
+background:var(--yellow)
+}
+
+#gd-prison-health .gd-person.active.malaria:before,
+#gd-prison-health .gd-person.active.malaria:after{
+background:var(--teal)
+}
+
+#gd-prison-health .gd-person.active.tb:before,
+#gd-prison-health .gd-person.active.tb:after{
+background:var(--coral)
+}
+
+#gd-prison-health .gd-person.active.other:before,
+#gd-prison-health .gd-person.active.other:after{
+background:var(--purple)
+}
+
+
+/* =========================
+   SELECTED / DIMMED
+========================= */
+
+#gd-prison-health .gd-person.selected{
+transform:translateY(-5px) scale(1.12);
+filter:drop-shadow(0 5px 5px rgba(0,0,0,.1));
+z-index:3
+}
+
+#gd-prison-health .gd-person.dimmed{
+opacity:.14;
+transform:scale(.88)
+}
+
+
+/* =========================
+   STAT
+========================= */
+
+#gd-prison-health .gd-stat{
+text-align:center;
+min-height:125px;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+margin:0 auto 20px
+}
+
+#gd-prison-health .gd-stat-condition{
+font-size:16px;
+font-weight:700;
+line-height:1.35
+}
+
+#gd-prison-health .gd-stat-number{
+font-size:clamp(42px,6vw,61px);
+font-weight:700;
+line-height:.95;
+letter-spacing:-.055em
+}
+
+#gd-prison-health .gd-stat-percent{
+font-size:14px;
+opacity:.62;
+margin-top:7px
+}
+
+
+/* =========================
+   LEGEND
+========================= */
+
+#gd-prison-health .gd-legend-title{
+text-align:center;
+font-size:12px;
+font-weight:700;
+opacity:.55;
+margin-bottom:11px
+}
+
+#gd-prison-health .gd-legend{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:9px 12px
+}
+
+#gd-prison-health .gd-legend-button{
+border:1px solid rgba(23,23,23,.13);
+background:rgba(255,255,255,.3);
+border-radius:12px;
+padding:11px 12px;
+display:flex;
+align-items:center;
+gap:9px;
+font-family:inherit;
+color:var(--text);
+cursor:pointer;
+text-align:left;
+transition:.2s ease
+}
+
+#gd-prison-health .gd-legend-button:hover{
+transform:translateY(-1px);
+background:white
+}
+
+#gd-prison-health .gd-legend-button.selected{
+background:white;
+border-color:rgba(23,23,23,.35)
+}
+
+#gd-prison-health .gd-swatch{
+width:12px;
+height:12px;
+min-width:12px;
+border-radius:50%
+}
+
+#gd-prison-health .gd-legend-name{
+flex:1;
+font-size:11.5px;
+line-height:1.3;
+font-weight:600
+}
+
+#gd-prison-health .gd-legend-percent{
+font-size:11px;
+opacity:.58;
+white-space:nowrap
+}
+
+
+/* =========================
+   REPLAY
+========================= */
+
+#gd-prison-health .gd-controls{
+display:flex;
+justify-content:center;
+margin-top:24px
+}
+
+#gd-prison-health .gd-replay{
+border:none;
+background:var(--text);
+color:white;
+border-radius:999px;
+padding:10px 19px;
+font-family:inherit;
+font-size:12px;
+font-weight:700;
+cursor:pointer;
+transition:.2s ease
+}
+
+#gd-prison-health .gd-replay:hover{
+transform:translateY(-1px);
+opacity:.85
+}
+
+
+/* =========================
+   FOOTNOTE + BADGE
+========================= */
+
+#gd-prison-health .gd-footnote{
+max-width:680px;
+margin:24px auto 0;
+font-size:10.5px;
+line-height:1.55;
+opacity:.55;
+text-align:center
+}
+
+#gd-prison-health .gd-badge-wrap{
+display:flex;
+justify-content:center;
+margin-top:26px
+}
+
+#gd-prison-health .gd-badge{
+width:34px;
+height:34px;
+border-radius:50%;
+background:white;
+color:#111;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:Arial,sans-serif;
+font-size:14px;
+font-weight:700;
+box-shadow:0 1px 5px rgba(0,0,0,.06)
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:600px){
+
+#gd-prison-health .gd-card{
+padding:32px 18px 26px;
+border-radius:18px
+}
+
+#gd-prison-health .gd-big-number{
+display:block;
+margin:0 0 5px
+}
+
+#gd-prison-health .gd-intro-label{
+max-width:100%
+}
+
+#gd-prison-health .gd-icon-grid{
+gap:5px
+}
+
+#gd-prison-health .gd-legend{
+grid-template-columns:1fr
+}
+
+}
+</style>
+
+
+<div class="gd-card">
+
+<div class="gd-kicker">
+Health after prison · Uganda · 2025
+</div>
+
+<h2 class="gd-title">
+What health challenges did people face after leaving prison?
+</h2>
+
+<p class="gd-intro">
+
+<span class="gd-big-number">2,125</span>
+
+<span class="gd-intro-label">
+newly released people were followed for
+<strong>two months after release</strong>
+in the Greater Masaka Region.
+</span>
+
+</p>
+
+<div class="gd-divider"></div>
+
+<h3 class="gd-heading">
+A snapshot of their reported health conditions
+</h3>
+
+<p class="gd-description">
+Each icon represents roughly 1% of the people followed.
+Watch the groups emerge, or select a condition to explore it.
+</p>
+
+
+<!-- =====================================================
+100 PEOPLE
+47 mental + 24 HIV + 10 skin + 9 malaria + 7 TB + 3 other
+===================================================== -->
+
+<div class="gd-icon-grid">
+
+<!-- MENTAL 47 -->
+
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span><span class="gd-person mental"></span>
+<span class="gd-person mental"></span><span class="gd-person mental"></span>
+
+
+<!-- HIV 24 -->
+
+<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+<span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span><span class="gd-person hiv"></span>
+
+
+<!-- SKIN 10 -->
+
+<span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span>
+<span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span><span class="gd-person skin"></span>
+
+
+<!-- MALARIA 9 -->
+
+<span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span>
+<span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span><span class="gd-person malaria"></span>
+
+
+<!-- TB 7 -->
+
+<span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span>
+<span class="gd-person tb"></span><span class="gd-person tb"></span><span class="gd-person tb"></span>
+
+
+<!-- OTHER 3 -->
+
+<span class="gd-person other"></span><span class="gd-person other"></span><span class="gd-person other"></span>
+
+</div>
+
+
+<div class="gd-stat">
+
+<div class="gd-stat-condition">
+Mental health disorders
+</div>
+
+<div class="gd-stat-number">
+1,000
+</div>
+
+<div class="gd-stat-percent">
+47.1% of those followed
+</div>
+
+</div>
+
+
+<div class="gd-legend-title">
+CLICK A CONDITION TO EXPLORE
+</div>
+
+
+<div class="gd-legend">
+
+<button class="gd-legend-button selected" data-condition="mental" type="button">
+<span class="gd-swatch" style="background:#323DA5"></span>
+<span class="gd-legend-name">Mental health disorders</span>
+<span class="gd-legend-percent">47.1%</span>
+</button>
+
+<button class="gd-legend-button" data-condition="hiv" type="button">
+<span class="gd-swatch" style="background:#D33C62"></span>
+<span class="gd-legend-name">HIV/AIDS</span>
+<span class="gd-legend-percent">24.0%</span>
+</button>
+
+<button class="gd-legend-button" data-condition="skin" type="button">
+<span class="gd-swatch" style="background:#FFD166"></span>
+<span class="gd-legend-name">Skin diseases</span>
+<span class="gd-legend-percent">9.6%</span>
+</button>
+
+<button class="gd-legend-button" data-condition="malaria" type="button">
+<span class="gd-swatch" style="background:#06D6A0"></span>
+<span class="gd-legend-name">Malaria</span>
+<span class="gd-legend-percent">8.9%</span>
+</button>
+
+<button class="gd-legend-button" data-condition="tb" type="button">
+<span class="gd-swatch" style="background:#EE7B72"></span>
+<span class="gd-legend-name">Tuberculosis (TB)</span>
+<span class="gd-legend-percent">6.6%</span>
+</button>
+
+<button class="gd-legend-button" data-condition="other" type="button">
+<span class="gd-swatch" style="background:#844DEE"></span>
+<span class="gd-legend-name">Others</span>
+<span class="gd-legend-percent">3.8%</span>
+</button>
+
+</div>
+
+
+<div class="gd-controls">
+
+<button class="gd-replay" type="button">
+↻ Replay animation
+</button>
+
+</div>
+
+
+<div class="gd-footnote">
+Percentages and counts are as reported in the source data.
+The 100-icon grid uses rounded whole-icon proportions for visualisation.
+</div>
+
+
+<div class="gd-badge-wrap">
+<div class="gd-badge">Gd</div>
+</div>
+
+</div>
+
+
+<script>
+(function(){
+
+var root=document.getElementById("gd-prison-health");
+if(!root)return;
+
+var people=root.querySelectorAll(".gd-person");
+var buttons=root.querySelectorAll(".gd-legend-button");
+
+var condition=root.querySelector(".gd-stat-condition");
+var number=root.querySelector(".gd-stat-number");
+var percent=root.querySelector(".gd-stat-percent");
+
+var replay=root.querySelector(".gd-replay");
+
+
+var data={
+mental:["Mental health disorders","1,000","47.1%"],
+hiv:["HIV/AIDS","510","24.0%"],
+skin:["Skin diseases","205","9.6%"],
+malaria:["Malaria","190","8.9%"],
+tb:["Tuberculosis (TB)","140","6.6%"],
+other:["Others","80","3.8%"]
+};
+
+
+/* =========================
+   SELECT CONDITION
+========================= */
+
+function selectCondition(key){
+
+var d=data[key];
+
+condition.textContent=d[0];
+number.textContent=d[1];
+percent.textContent=d[2]+" of those followed";
+
+
+buttons.forEach(function(button){
+
+button.classList.toggle(
+"selected",
+button.getAttribute("data-condition")===key
+);
+
+});
+
+
+people.forEach(function(person){
+
+var match=person.classList.contains(key);
+
+person.classList.toggle("active",match);
+person.classList.toggle("selected",match);
+person.classList.toggle("dimmed",!match);
+
+});
+
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+buttons.forEach(function(button){
+
+button.addEventListener("click",function(){
+
+selectCondition(
+button.getAttribute("data-condition")
+);
+
+});
+
+});
+
+
+/* =========================
+   REPLAY
+========================= */
+
+replay.addEventListener("click",function(){
+
+people.forEach(function(person){
+
+person.classList.remove(
+"active",
+"selected",
+"dimmed"
+);
+
+});
+
+root.classList.remove("gd-running");
+
+void root.offsetWidth;
+
+root.classList.add("gd-running");
+
+});
+
+
+/* =========================
+   START ON SCROLL
+========================= */
+
+if("IntersectionObserver" in window){
+
+var observer=new IntersectionObserver(
+function(entries){
+
+if(entries[0].isIntersecting){
+
+root.classList.add("gd-running");
+
+observer.disconnect();
+
+}
+
+},
+{threshold:.15}
+);
+
+observer.observe(root);
+
+}else{
+
+root.classList.add("gd-running");
+
+}
+
+})();
+</script>
+
+</div>
